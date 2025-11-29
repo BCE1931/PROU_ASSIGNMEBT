@@ -13,8 +13,15 @@ A complete task management system featuring:
 
 ## 📹 Project Demo (Screenshots / Video)
 
-📸 _Add screenshots here_  
 🎬 _Add video link here_
+
+##ADMIN PANNEL
+<img width="1919" height="758" alt="image" src="https://github.com/user-attachments/assets/b84b7b63-6d74-4f38-bcb8-d0d4dd7ea53c" />
+<img width="1919" height="720" alt="image" src="https://github.com/user-attachments/assets/b0ab038d-5b77-403b-8ecc-d5de4b0dc219" />
+
+##USER_PANNEL
+<img width="1918" height="729" alt="image" src="https://github.com/user-attachments/assets/23f1f914-8a51-4d8d-b352-7f875b607d83" />
+<img width="1918" height="654" alt="image" src="https://github.com/user-attachments/assets/05f7209b-78dd-4007-ad2d-c21036744bae" />
 
 ---
 
@@ -262,4 +269,5 @@ A complete full-stack task manager system featuring:
 ✔ Admin-level user management  
 ✔ Analytics dashboard  
 ✔ Clean UI with dark mode
+
 
