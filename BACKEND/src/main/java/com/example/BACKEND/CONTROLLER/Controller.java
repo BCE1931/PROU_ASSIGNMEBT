@@ -32,14 +32,6 @@ public class Controller {
     @Autowired
     private Taskrepo taskrepo;
 
-    @GetMapping("/topics/{topic}")
-    public ResponseEntity<?> topics(@PathVariable String topic, @RequestHeader("Authorization") String authheader){
-        if(!validatetoken.validate(authheader.substring(7))){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("session expired please try again");
-        }
-//        List<Mytopcs> topics = service1.gettopics(topic,validatetoken.extractUsername(authheader.substring(7)));
-        return new ResponseEntity("hi", HttpStatus.OK);
-    }
 
     @GetMapping("/users/allusers")
     public ResponseEntity<?> allusers(@RequestHeader("Authorization") String authheader){
