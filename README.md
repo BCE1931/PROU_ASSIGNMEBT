@@ -1,195 +1,265 @@
-⭐ PROU_ASSIGNMEBT – Full Stack Task Manager System
+# ⭐ PROU_ASSIGNMEBT – Full Stack Task Manager System
 
-A complete task management system featuring:
-👤 User login & signup
-👑 Admin mode with extra privileges
-📝 Task creation, editing, deleting
-📊 Dashboard with completed & pending statistics
-📂 Admin panel to view/delete users
-🔐 Secure JWT + refresh token authentication
+A complete task management system featuring:  
+👤 User login & signup  
+👑 Admin mode with extra privileges  
+📝 Task creation, editing & deleting  
+📊 Dashboard with completion statistics  
+📂 Admin panel to view/delete users  
+🔐 Secure JWT + Refresh Token authentication  
 🌙 Modern dark-theme UI (React + ShadCN)
 
-📹 Project Demo (Screenshots / Video)
+---
 
-Place your screenshots / videos here:
-[ add screenshots ]
-[ add video link ]
+## 📹 Project Demo (Screenshots / Video)
 
-🚀 Tech Stack
+📸 _Add screenshots here_  
+🎬 _Add video link here_
 
-Frontend: React (Vite), ShadCN UI, Tailwind CSS, Lucide Icons, JWT auth, REST API
-Backend: Spring Boot 3, Spring MVC, Spring Data JPA, MySQL, JWT (Access + Refresh), Lombok, Maven
-Database: MySQL (tables: user, task)
+---
 
-🏗️ System Architecture
+## 🚀 Tech Stack
 
+### **Frontend**
+- React (Vite)  
+- ShadCN UI  
+- Tailwind CSS  
+- Lucide Icons  
+- JWT authentication  
+- REST API
+
+### **Backend**
+- Spring Boot 3  
+- Spring MVC  
+- Spring Data JPA  
+- MySQL  
+- JWT (Access + Refresh)  
+- Lombok  
+- Maven
+
+### **Database**
+- MySQL (Tables: `user`, `task`)
+
+---
+
+## 🏗️ System Architecture
+
+```
 PROU_ASSIGNMEBT
 │
 ├── FRONTEND (React + Vite)
-│ ├── Login / Signup
-│ ├── Dashboard
-│ ├── Task CRUD
-│ ├── Admin Panel
-│ └── Token Refresh Logic
+│   ├── Login / Signup
+│   ├── Dashboard
+│   ├── Task CRUD
+│   ├── Admin Panel
+│   └── Token Refresh Logic
 │
 └── BACKEND (Spring Boot)
-├── Controllers
-│ ├── /oauth → Login & Signup
-│ ├── /api/v1/users → User management
-│ ├── /api/v1/task → Task CRUD
-│ └── /api/v1/work → Task fetch
-├── Services
-├── Repositories
-├── JWT Token manager
-└── MySQL database
+    ├── Controllers
+    │   ├── /oauth        → Login & Signup
+    │   ├── /api/v1/users → User management
+    │   ├── /api/v1/task  → Task CRUD
+    │   └── /api/v1/work  → Fetch tasks
+    ├── Services
+    ├── Repositories
+    ├── JWT Token Manager
+    └── MySQL Database
+```
 
-📦 Project Structure
+---
 
+## 📦 Project Structure
+
+```
 PROU_ASSIGNMEBT
 ├── BACKEND/
-│ ├── src/main/java
-│ ├── pom.xml
-│ └── application.properties
+│   ├── src/main/java
+│   ├── pom.xml
+│   └── application.properties
 │
 └── FRONTEND/
-├── src/
-├── package.json
-├── vite.config.js
-└── tailwind.config.js
+    ├── src/
+    ├── package.json
+    ├── vite.config.js
+    └── tailwind.config.js
+```
 
-🔧 Setup & Run Instructions
+---
 
-⚙️ Backend Setup (Spring Boot)
+## 🔧 Setup & Run Instructions
 
-Create database: CREATE DATABASE prou_assignment;
+### ⚙️ Backend Setup (Spring Boot)
 
-Update BACKEND/src/main/resources/application.properties:
+**1. Create database**
+```
+CREATE DATABASE prou_assignment;
+```
+
+**2. Configure application.properties**
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/prou_assignment
 spring.datasource.username=root
-spring.datasource.password=yourpassword
+spring.datasource.password=YOUR_PASSWORD
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+```
 
-Run backend: mvn spring-boot:run
-Backend runs at: http://localhost:8083
+**3. Run backend**
+```
+mvn spring-boot:run
+```
 
-🎨 Frontend Setup (React)
+Backend runs at → **http://localhost:8083**
 
+---
+
+### 🎨 Frontend Setup (React)
+
+**1. Install dependencies**
+```
 npm install
+```
 
-Update FRONTEND/src/UTILS/config.js with: const BASE_URL = "http://localhost:8083
-";
+**2. Configure API URL**  
+File: `src/UTILS/config.js`
+```
+const BASE_URL = "http://localhost:8083";
+export default BASE_URL;
+```
 
+**3. Run frontend**
+```
 npm run dev
-Frontend runs at: http://localhost:5173
+```
 
-📡 API Documentation
+Frontend runs at → **http://localhost:5173**
 
-🔐 AUTHENTICATION API
-POST /oauth/register
-Body: { "username": "user1", "email": "abc@gmail.com
-", "password": "123", "admin": true }
+---
 
-POST /oauth/login
-Response: { "token": "...", "refreshtoken": "...", "username": "user1", "admin": true }
+## 📡 API Documentation
 
-👥 USERS API
+### 🔐 Authentication API
 
-GET /oauth/users/allusers
-Returns: list of all users with id, username, email, date, times, admin(true/false)
+#### **POST /oauth/register**
+```json
+{ "username": "user1", "email": "abc@gmail.com", "password": "123", "admin": true }
+```
 
-DELETE /oauth/users/delete/{id}
+#### **POST /oauth/login**
+_returns access + refresh token_
+```json
+{ "token": "...", "refreshtoken": "...", "username": "user1", "admin": true }
+```
+
+---
+
+### 👥 Users API
+
+#### **GET /oauth/users/allusers**
+Returns:
+- id  
+- username  
+- email  
+- date  
+- times  
+- admin (true/false)
+
+#### **DELETE /oauth/users/delete/{id}**
 Deletes:
+- user  
+- all tasks assigned to that user  
 
-user
+---
 
-tasks assigned to that user
+### 📝 Task API
 
-📝 TASK API
+#### **GET /api/v1/work/totaltasks**
+Returns all tasks.
 
-GET /api/v1/work/totaltasks → returns all tasks
-POST /api/v1/task/addtask → add new task
-PUT /api/v1/task/updatetask/{id} → update task
-DELETE /api/v1/task/deletetask/{id} → delete task
+#### **POST /api/v1/task/addtask**
+```json
+{ "title": "read docs", "user": "user3", "status": "TO_DO" }
+```
 
-Task fields:
-id, title, user, status (TO_DO, IN_PROGRESS, COMPLETED), date
+#### **PUT /api/v1/task/updatetask/{id}**
+```json
+{ "title": "updated task", "user": "user1", "status": "COMPLETED" }
+```
 
-🎯 Features
+#### **DELETE /api/v1/task/deletetask/{id}**
+Deletes a specific task.
 
-ADMIN FEATURES:
+_Task format:_  
+`id`, `title`, `user`, `status (TO_DO | IN_PROGRESS | COMPLETED)`, `date`
 
-View all users
+---
 
-Delete users
+## 🎯 Features
 
-Add tasks for any user
+### **ADMIN**
+✔ View all users  
+✔ Delete users  
+✔ Add tasks for any user  
+✔ Edit/delete any task  
+✔ Access admin panel  
 
-Edit & delete any task
+### **USER**
+✔ Add tasks for themselves  
+✔ Edit only their tasks  
+✔ Dark UI mode  
+✔ Filter tasks by user/status  
 
-Access admin panel
+---
 
-USER FEATURES:
+## 📉 Dashboard Metrics
+- Total tasks  
+- Completed tasks  
+- Completion rate (%)  
+- Filters for status + user  
 
-Add tasks only to themselves
+---
 
-Edit only their own tasks
+## 📂 Admin Panel
+Displays:  
+- Username  
+- Email  
+- Date  
+- Times  
+- Admin (true/false)  
+- Delete button  
 
-Filter tasks
+---
 
-Dark UI mode
+## ⚠️ Assumptions
+- Only admin can delete users  
+- Users cannot modify others’ tasks  
+- JWT stored in localStorage  
+- Auto token refresh implemented  
 
-📉 Dashboard Metrics
+---
 
-Total tasks
+## 🚫 Limitations
+- No pagination  
+- No user update API  
+- No global logout  
+- No email verification  
 
-Completed tasks
+---
 
-Completion rate
+## 📍 Future Enhancements
+- Change password  
+- Promote user to admin  
+- Task search  
+- Pagination  
+- Improved UI for errors  
 
-Filter by status / user
+---
 
-📂 Admin Panel
-Shows: username, email, date, times, admin (true/false), delete button
+## 🏁 Conclusion
+A complete full-stack task manager system featuring:  
+✔ Secure login/signup  
+✔ Task operations (CRUD)  
+✔ Admin-level user management  
+✔ Analytics dashboard  
+✔ Clean UI with dark mode
 
-⚠️ Assumptions
-
-Only admin can delete users
-
-Normal user cannot modify others' tasks
-
-JWT stored in localStorage
-
-Token refresh auto-handled
-
-🚫 Limitations
-
-No pagination
-
-No user update API
-
-No global logout
-
-No email verification
-
-Basic admin/user role model
-
-📍 Future Enhancements
-
-Change password
-
-Promote user to admin
-
-Task search
-
-Better error UI
-
-Pagination
-
-🏁 Conclusion
-This project provides a complete full-stack task management solution featuring:
-✔ secure login
-✔ admin-level controls
-✔ task operations
-✔ analytics dashboard
-✔ modern UI
