@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox"; // ✅ Added
+import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import { MagicCard } from "@/components/ui/magic-card";
 import { toast } from "sonner";
@@ -28,7 +28,7 @@ const Signup = () => {
   const [email, setemail] = useState("");
   const [username, setname] = useState("");
   const [password, setpassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false); // ✅ NEW
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -100,7 +100,6 @@ const Signup = () => {
 
           <CardContent className="p-6">
             <form onSubmit={register} className="grid gap-4">
-              {/* Email */}
               <div className="grid gap-2">
                 <Label className="text-gray-300">Email</Label>
                 <Input
@@ -111,7 +110,6 @@ const Signup = () => {
                 />
               </div>
 
-              {/* Username */}
               <div className="grid gap-2">
                 <Label className="text-gray-300">Username</Label>
                 <Input
@@ -122,7 +120,6 @@ const Signup = () => {
                 />
               </div>
 
-              {/* Password */}
               <div className="grid gap-2">
                 <Label className="text-gray-300">Password</Label>
                 <Input
@@ -133,7 +130,6 @@ const Signup = () => {
                 />
               </div>
 
-              {/* ✅ Admin Checkbox */}
               <div className="flex items-center gap-2 mt-2">
                 <Checkbox
                   id="adminCheck"
@@ -149,7 +145,6 @@ const Signup = () => {
                 </Label>
               </div>
 
-              {/* Button */}
               <Button
                 type="submit"
                 disabled={loading}

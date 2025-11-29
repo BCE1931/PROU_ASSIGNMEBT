@@ -34,7 +34,6 @@ function TaskManagerApp() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
 
-  // REFRESH TOKEN
   const refreshtoken = async () => {
     try {
       const resp = await fetch(`${BASE_URL}/token/refresh`, {
@@ -56,7 +55,6 @@ function TaskManagerApp() {
     return false;
   };
 
-  // LOAD USERS
   const loadUsers = async () => {
     const resp = await fetch(`${BASE_URL}/api/v1/users/allusers`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -72,7 +70,6 @@ function TaskManagerApp() {
     setEmployees(data);
   };
 
-  // LOAD TASKS (No duplicates)
   const loadTasks = async () => {
     const resp = await fetch(`${BASE_URL}/api/v1/work/totaltasks`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -95,7 +92,6 @@ function TaskManagerApp() {
     loadTasks();
   }, []);
 
-  // ADD / UPDATE TASK
   const handleSaveTask = async (taskData) => {
     if (currentTask) {
       const resp = await fetch(
@@ -136,7 +132,6 @@ function TaskManagerApp() {
     await loadTasks();
   };
 
-  // DELETE TASK
   const deleteTask = async (id) => {
     const resp = await fetch(`${BASE_URL}/api/v1/task/deletetask/${id}`, {
       method: "DELETE",
@@ -153,7 +148,6 @@ function TaskManagerApp() {
     await loadTasks();
   };
 
-  // FILTERING
   const filteredTasks = useMemo(() => {
     return tasks.filter((task) => {
       const matchStatus =
@@ -163,7 +157,6 @@ function TaskManagerApp() {
     });
   }, [tasks, filterStatus, filterUser]);
 
-  // SUMMARY
   const dashboardSummary = useMemo(() => {
     const total = tasks.length;
     const completed = tasks.filter((t) => t.status === "COMPLETED").length;

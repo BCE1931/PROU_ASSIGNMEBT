@@ -10,7 +10,6 @@ const AdminPanel = () => {
   const token = localStorage.getItem("token");
   const refreshToken = localStorage.getItem("refreshtoken");
 
-  // REFRESH TOKEN
   const refreshtoken = async () => {
     try {
       const resp = await fetch(`${BASE_URL}/token/refresh`, {
@@ -31,7 +30,6 @@ const AdminPanel = () => {
     return false;
   };
 
-  // LOAD FULL USER DETAILS
   const loadUsers = async () => {
     const resp = await fetch(`${BASE_URL}/oauth/users/allusers`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -51,7 +49,6 @@ const AdminPanel = () => {
     loadUsers();
   }, []);
 
-  // DELETE USER
   const deleteUser = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
@@ -114,7 +111,6 @@ const AdminPanel = () => {
                       : "❌ False"}
                   </td>
 
-                  {/* DELETE BUTTON */}
                   <td className="p-3">
                     <Button
                       variant="destructive"

@@ -102,11 +102,9 @@ const Card1 = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0a0a12] to-[#000000] relative overflow-hidden">
-      {/* 🔹 Soft glowing background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.08),transparent_60%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(56,189,248,0.05),transparent_60%)]"></div>
 
-      {/* 🔹 Login Card */}
       <Card className="w-full max-w-sm border-none bg-transparent shadow-none relative z-10">
         <MagicCard
           gradientColor="#141414"
@@ -168,7 +166,6 @@ const Card1 = () => {
                 </Link>
               </div>
 
-              {/* 🔹 Button with internal spinner only */}
               <Button
                 type="submit"
                 disabled={loading}
